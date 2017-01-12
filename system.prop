@@ -4,7 +4,7 @@
 # rild.libpath=/system/lib/libril-moto-umts-1.so
 rild.libpath=/system/lib/libmoto_ril.so
 rild.libargs=-d /dev/ttyO0
-#ro.default_usb_mode=2
+ro.default_usb_mode=2
 ro.sf.lcd_density=240
 ro.mot.ril.danlist=611,*611,#611
 persist.ril.ecclist=911,*911,#911,119,118,999,08,000,112,110
@@ -21,7 +21,7 @@ ro.modem_available=0
 
 # Default network type.
 # 7 => Global Phone (4 => CDMA).
-ro.telephony.default_network=7
+ro.telephony.default_network=4
 ro.com.google.clientid=android-motorola
 ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
 ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html
@@ -29,7 +29,7 @@ ro.cdma.home.operator.numeric=310004
 ro.cdma.home.operator.alpha=Verizon
 
 # Set this for GSM
-#ro.cdma.subscription=0
+ro.cdma.subscription=0
 
 ro.config.vc_call_vol_steps=7
 
@@ -41,7 +41,7 @@ wifi.ap.interface = wlan0
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,
 # but none are in range.
-wifi.supplicant_scan_interval = 90
+wifi.supplicant_scan_interval = 16
 
 # Indicate carrier OTA SP number schema
 # refer to frameworks/base/telephony/java/com/android/
@@ -88,7 +88,7 @@ ro.cdma.nbpcd=1
 # persist.mot.powerup.tone=/system/media/bootup.ogg
 # END IKSHADOW-1784
 persist.mot.usb.mediasync = 1
-# persist.usb.android_config = 1
+persist.usb.android_config = 1
 
 # System property for Security Middleware Component
 ro.service.start.smc=1
@@ -139,13 +139,13 @@ ro.mot.dpmext = true
 
 # BEGIN Moto,IKDROIDPRO-430, a17673
 # Feature33857 on DroidWE, support DualMode switch, UMTS/CDMA
-#ro.mot.FTR.33857=true
+ro.mot.FTR.33857=true
 # END IKDROIDPRO-430
 
 # BEGIN Moto, IKSTABLETWO-1284, nfjb73
 # without this property, the lock screen would take global phone as UMTS
 # block user to operate before setup
-keyguard.no_require_sim = true
+keyguard.no_require_sim = false
 # End Moto
 
 # BEGIN Moto, IKSTABLETWO-689, nfjb73, for 34387,33857
@@ -169,17 +169,17 @@ ro.mot.bindervm.config = 210
 # END IKMAIN-13570
 
 #BEGIN Motorola, w30471, 16-Mar-2011, IKSTABLEFIVE-1796 35691 - Set configurable parameters for Verizon products
-#mot.mms.con.timeout = 30000
-#mot.mms.socket.timeout = 120000
-#mot.mms.tr.vc.timeout = 55000
-#mot.mms.trm.timeout = 240000
-#mot.mms.abort.prog.lim = 90
-#mot.mms.retry.pic.size = 512000
-#mot.mms.retry.default = false
-#mot.mms.retry.timeout.1 = 30000
-#mot.mms.retry.timeout.2 = 180000
-#mot.mms.retry.timeout.3 = 300000
-#mot.mms.retry.timeout.4 = 480000
+mot.mms.con.timeout = 0
+mot.mms.socket.timeout = 0
+mot.mms.tr.vc.timeout = 0
+mot.mms.trm.timeout = 0
+mot.mms.abort.prog.lim = 90
+mot.mms.retry.pic.size = 512000
+mot.mms.retry.default = false
+mot.mms.retry.timeout.1 = 0
+mot.mms.retry.timeout.2 = 0
+mot.mms.retry.timeout.3 = 0
+mot.mms.retry.timeout.4 = 0
 # END IKSTABLEFIVE-1796
 
 # BEGIN Motorola abp095, 4-Jan-2012, IKHSS7-2427 - Thumbnail property change
@@ -211,13 +211,13 @@ persist.ril.mux.retries=500
 persist.ril.mux.sleep=2
 
 # Enable for GSM
-#persist.ril.rssi.enable.param6 = 1
-#persist.ril.baudrate=230400
+persist.ril.rssi.enable.param6 = 1
+persist.ril.baudrate=230400
 
-#persist.mot.mdm_panicd.nopanic=no
-#ro.media.enc.aud.fileformat=3gp
-#ro.media.enc.aud.codec=amrnb
-#ro.media.enc.aud.bps=12200
+persist.mot.mdm_panicd.nopanic=no
+ro.media.enc.aud.fileformat=3gp
+ro.media.enc.aud.codec=amrnb
+ro.media.enc.aud.bps=12200
 ro.com.google.gmsversion=4.0_r2
 ro.crypto.state=unencrypted
 ro.media.enc.aud.fileformat=qcp
@@ -229,11 +229,11 @@ ro.mot.setuptype=2
 ro.HorizontalBUA=true
 ro.HorizontalVVM=true
 ro.horizontalIM=true
-ro.horizontalNGM=false
-ro.horizontalVMM=false
-ro.horizontalMOD=false
-ro.horizontalVOD=false
-ro.horizontalEmail=false
+ro.horizontalNGM=true
+ro.horizontalVMM=true
+ro.horizontalMOD=true
+ro.horizontalVOD=true
+ro.horizontalEmail=true
 ro.media.camcorder.1080p=mp4,h264,30,15000000,aac,128000,44100,2
 ro.media.camcorder.720p=mp4,h264,30,10000000,aac,128000,44100,2
 ro.media.camcorder.d1NTSC=mp4,h264,30,6000000,aac,128000,44100,2
@@ -244,7 +244,7 @@ ro.media.camcorder.mms=3gp,h264,15,128000,amrnb,12200,8000,1
 ro.media.camcorder.mmsres=qvga
 ro.camcorder.zoom=true
 ro.media.capture.maxres=5m
-ro.media.capture.fast.fps=4
+ro.media.capture.fast.fps=120
 ro.media.capture.slow.fps=120
 ro.media.capture.flash=led
 ro.media.capture.flashMinV=3300000
@@ -255,18 +255,18 @@ ro.media.panorama.defres=3264x1840
 ro.media.panorama.frameres=1280x720
 persist.service.aplogd.enable=1
 ro.mot.phonemode.vzw4gphone=1
-ro.mot.lte_on_cdma=1
+ro.mot.lte_on_cdma=0
 ro.mot.tmp.telephony.refactor=true
 ro.cdma.subscription=0
 cdma_ril.libpath=/system/lib/libmoto_ril.so
 ril.rat=LTE
 lte_ril.netcfg_to=90
-#ro.mot.internalsdcard=1
+ro.mot.internalsdcard=1
 ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=3000
 ro.setupwizard.enable_bypass=1
 ro.cdma.homesystem=64,65,76,77,78,79,80,81,82,83
-#ro.cdma.data_retry_config=max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000
+ro.cdma.data_retry_config=max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000
 ro.cdma.data_retry_config=default_randomization=2000,0,0,120000,180000,540000,960000
 ro.gsm.data_retry_config=default_randomization=2000,max_retries=infinite,0,0,80000,125000,485000,905000
 ro.gsm.2nd_data_retry_config=max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000
@@ -279,7 +279,7 @@ ro.setupwizard.enable_bypass=1
 persist.sys.usb.config=mtp,adb
 
 com.ti.omap_enhancement=true
-hwui.render_dirty_regions=false
+hwui.render_dirty_regions=true
 persist.sys.root_access=3
-ro.hwc.legacy_api=true
+ro.hwc.legacy_api=false
 ro.product.use_charge_counter=1
